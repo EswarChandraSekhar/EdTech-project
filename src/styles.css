@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+
+body#main-app {
+    background: linear-gradient(to right, #fdfbfb, #ebedee); /* Classy light gradient */
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+  }
+
