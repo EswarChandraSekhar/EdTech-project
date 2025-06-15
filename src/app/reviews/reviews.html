@@ -1,9 +1,8 @@
-<section class="container py-5">
+<section *ngIf="addReviewForm === false" class="container py-5">
   <div class="text-center mb-5">
     <h2 class="fw-bold text-primary display-6">What Our Learners Say</h2>
     <p class="text-muted fs-5">Real experiences from students who've transformed their careers with EduSpark.</p>
   </div>
-
   <div class="row g-4">
     <!-- Testimonial 1 -->
     <div class="col-md-6">
@@ -53,7 +52,8 @@
             </div>
           </div>
           <p class="text-dark mb-0 fst-italic">
-            “I was preparing for job interviews, and the mock sessions at EduSpark gave me the confidence I needed to succeed.”
+            “I was preparing for job interviews, and the mock sessions at EduSpark gave me the confidence I needed to
+            succeed.”
           </p>
         </div>
       </div>
@@ -71,10 +71,52 @@
             </div>
           </div>
           <p class="text-dark mb-0 fst-italic">
-            “From frontend to backend, the curriculum is up-to-date and practical. EduSpark turned me into a confident developer.”
+            “From frontend to backend, the curriculum is up-to-date and practical. EduSpark turned me into a confident
+            developer.”
           </p>
         </div>
       </div>
     </div>
   </div>
+  <!-- button -->
+  <div class="text-center mt-4">
+    <button (click)="addReviewButtonClick()" class="btn btn-primary btn-lg px-4 shadow" data-bs-toggle="modal"
+      data-bs-target="#reviewModal">
+      <i class="bi bi-plus-circle me-2"></i>Add Review
+    </button>
+  </div>
 </section>
+
+<!-- add-review.component.html -->
+<div *ngIf="addReviewForm === true" class="container my-5">
+  <div class="my-card border p-4 shadow-sm">
+    <h2 class="text-center text-primary fw-bold mb-4">Add Your Review</h2>
+  <form  class="mx-auto" style="max-width: 600px;">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Title/Role</label>
+      <input type="text" class="form-control" name="title"  required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Feedback</label>
+      <textarea class="form-control" rows="4" name="feedback"  required></textarea>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-success" >
+        <i class="bi bi-check-circle me-1"></i> Submit
+      </button>
+
+      <!-- Go Back Button -->
+      <a (click)="handleBackClick()" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Go Back
+      </a>
+    </div>
+  </form>
+  </div>
+</div>

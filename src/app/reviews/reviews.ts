@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './reviews.css'
 })
 export class Reviews {
-
+  addReviewForm: boolean = false;
+  addReviewButtonClick(){
+    this.addReviewForm = true;
+  }
+  handleBackClick(){
+    this.addReviewForm = false;
+  }
 }

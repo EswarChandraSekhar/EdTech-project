@@ -8,6 +8,9 @@ import { AboutUs } from './about-us/about-us';
 import { ContactUs } from './contact-us/contact-us';
 import { Reviews } from './reviews/reviews';
 import { Home } from './home/home';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { PageNotFound } from './page-not-found/page-not-found';
+import { AppRoutingRoutingModule } from './app-routing-module';
 @NgModule({
   declarations: [
     App,
@@ -17,9 +20,12 @@ import { Home } from './home/home';
     ContactUs,
     Reviews,
     Home,
+    PageNotFound,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxSpinnerModule,
+    AppRoutingRoutingModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

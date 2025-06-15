@@ -28,9 +28,10 @@
 </nav>
 
 <div class="container mt-4">
-  <app-home *ngIf="activeTab === 'home'"></app-home>
+  <!-- <app-home *ngIf="activeTab === 'home'"></app-home>
   <app-courses *ngIf="activeTab === 'courses'"></app-courses>
   <app-about-us *ngIf="activeTab === 'about-us'"></app-about-us>
   <app-contact-us *ngIf="activeTab === 'contact-us'"></app-contact-us>
-  <app-reviews *ngIf="activeTab === 'reviews'"></app-reviews>
+  <app-reviews *ngIf="activeTab === 'reviews'"></app-reviews> -->
+  <router-outlet></router-outlet>
 </div>
