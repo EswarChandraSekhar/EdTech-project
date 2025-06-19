@@ -1,0 +1,131 @@
+<!-- Search and Filters -->
+<div *ngIf="productForm === false " class="container my-5">
+  <div class="row g-4">
+
+    <!-- Filters Sidebar -->
+    <div class="col-md-3">
+      <h5 class="mb-4">Filters</h5>
+
+      <!-- Category Filter -->
+      <div class="mb-4">
+        <h6 class="text-muted">Category</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="vegetables" id="filterVegetables">
+          <label class="form-check-label" for="filterVegetables">Vegetables</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="fruits" id="filterFruits">
+          <label class="form-check-label" for="filterFruits">Fruits</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="dairy" id="filterDairy">
+          <label class="form-check-label" for="filterDairy">Dairy</label>
+        </div>
+      </div>
+
+      <!-- Price Range -->
+      <div class="mb-4">
+        <h6 class="text-muted">Price Range</h6>
+        <input type="range" class="form-range" min="0" max="1000" id="priceRange">
+        <div class="d-flex justify-content-between">
+          <span>₹0</span>
+          <span>₹1000+</span>
+        </div>
+      </div>
+
+      <!-- Add Product -->
+      <div class="mb-4">
+         <button (click)="handleAddProduct()" class="btn btn-sm btn-success">Add Product</button>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="col-md-9">
+
+      <!-- Search Bar -->
+      <div class="input-group mb-4 shadow-sm">
+        <input type="text" class="form-control" placeholder="Search products..." aria-label="Search">
+        <button class="btn btn-success" type="button"><i class="bi bi-search"></i></button>
+      </div>
+      <!-- Products Grid -->
+      <div class="row g-4">
+        <!-- Product Card 1 -->
+        <div *ngFor="let product of productList" class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm hover-shadow">
+            <img [src]="product.image" class="card-img-top"
+              alt="Tomatoes">
+            <div class="card-body">
+              <h5 class="card-title">{{product.title}}</h5>
+              <p class="card-text text-muted small">Category: {{product.category}}</p>
+              <div class="mb-2">
+                <span class="text-warning">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-half"></i><i class="bi bi-star"></i>
+                </span>
+                <span class="text-muted small">{{product.ratingText}}</span>
+              </div>
+              <h6 class="text-success">{{product.price}}</h6>
+              <button class="btn btn-outline-success btn-sm mt-2 w-100">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="productForm === true" class="container mt-5 mb-5">
+  <h2 class="text-center mb-4 text-success">Add New Product</h2>
+
+  <form class="shadow p-4 bg-light rounded" >
+
+    <!-- Product Name -->
+    <div class="mb-3">
+      <label for="title" class="form-label fw-semibold">Product Name</label>
+      <input type="text" [(ngModel)]="productName" id="title" name="title" class="form-control" required>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="category" class="form-label fw-semibold">Category</label>
+      <select id="category" [(ngModel)]="productCategory" name="category" class="form-select" required >
+        <option value="" disabled selected>Select a category</option>
+        <option value="vegetables">Vegetables</option>
+        <option value="fruits">Fruits</option>
+        <option value="dairy">Dairy</option>
+        <option value="bakery">Bakery</option>
+        <option value="bevarages">Beverages</option>
+        <option value="snacks">Snacks</option>
+      </select>
+    </div>
+
+    <!-- Price -->
+    <div class="mb-3">
+      <label for="price" class="form-label fw-semibold">Price (e.g., ₹40 / kg)</label>
+      <input type="text" [(ngModel)]="productPrice" id="price" name="price" class="form-control" required >
+    </div>
+
+    <!-- Rating -->
+    <div class="mb-3">
+      <label for="rating" class="form-label fw-semibold">Rating (0 - 5)</label>
+      <input type="number" [(ngModel)]="productRating" step="0.1" min="0" max="5" id="rating" name="rating" class="form-control"  required>
+    </div>
+
+    <!-- Image URL -->
+    <div class="mb-3">
+      <label for="image" class="form-label fw-semibold">Image URL</label>
+      <input type="text" [(ngModel)]="productImage" id="image" name="image" class="form-control" required>
+    </div>
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-between">
+      <button (click)="handleSubmit()" type="submit" class="btn btn-success" >
+        <i class="bi bi-check-circle me-1"></i> Submit
+      </button>
+
+      <!-- Go Back Button -->
+      <a (click)="handleBackButton()" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Go Back
+      </a>
+    </div>
+  </form>
+</div>
