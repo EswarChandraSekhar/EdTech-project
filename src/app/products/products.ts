@@ -17,6 +17,8 @@ export class Products implements OnInit {
   productRating: any = null;
   productImage: string = ''
 
+  searchInput: string = ''
+
  productList: any[] = []
 
   constructor(public productService: Product){
@@ -52,6 +54,7 @@ export class Products implements OnInit {
     }
     this.productService.addProduct(product)
     this.productList.push(product)
+   
 
     this.productName = ''
     this.productCategory = ''
