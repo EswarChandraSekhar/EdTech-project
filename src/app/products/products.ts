@@ -17,26 +17,32 @@ export class Products implements OnInit {
   productRating: any = null;
   productImage: string = ''
 
+
+
+  searchInput: string = ''
+
+
   productList: any[] = []
 
-  constructor(public productService: Product){
-}
+
+  constructor(public productService: Product) {
+  }
 
   ngOnInit(): void {
-   this.productList =  this.productService.getProductList()
+    this.productList = this.productService.getProductList()
   }
- 
 
-  handleAddProduct(){
+
+  handleAddProduct() {
     this.productForm = true;
   }
-  handleBackButton(){
+  handleBackButton() {
     this.productForm = false;
   }
-  handleSubmit(){
-    if(this.productName === '' || this.productCategory === ''
-    || this.productPrice === '' || this.productRating === null ||
-    this.productImage === ''){
+  handleSubmit() {
+    if (this.productName === '' || this.productCategory === ''
+      || this.productPrice === '' || this.productRating === null ||
+      this.productImage === '') {
       alert('All fields are mandatory!')
       return;
     }
@@ -47,18 +53,19 @@ export class Products implements OnInit {
       image: this.productImage,
       price: this.productPrice,
       rating: this.productRating,
-      ratingText: this.productRating+''
+      ratingText: this.productRating + ''
     }
     this.productService.addProduct(product)
     this.productList.push(product)
+
 
     this.productName = ''
     this.productCategory = ''
     this.productImage = ''
     this.productPrice = ''
     this.productRating = null;
-    
+
     this.productForm = false;
   }
-  
+
 }

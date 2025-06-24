@@ -12,6 +12,7 @@ import { PageNotFound } from './page-not-found/page-not-found';
 import { AppRoutingRoutingModule } from './app-routing-module';
 import { FormsModule } from '@angular/forms';
 import { Products } from './products/products';
+import { SearchPipe } from './search-pipe';
 @NgModule({
   declarations: [
     App,
@@ -22,6 +23,7 @@ import { Products } from './products/products';
     Reviews,
     Home,
     PageNotFound,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

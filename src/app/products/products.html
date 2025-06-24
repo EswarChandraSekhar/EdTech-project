@@ -44,19 +44,18 @@
 
       <!-- Search Bar -->
       <div class="input-group mb-4 shadow-sm">
-        <input type="text" class="form-control" placeholder="Search products..." aria-label="Search">
-        <button class="btn btn-success" type="button"><i class="bi bi-search"></i></button>
+        <input type="text" [(ngModel)]="searchInput" class="form-control" placeholder="Search products..." aria-label="Search">
       </div>
       <!-- Products Grid -->
       <div class="row g-4">
         <!-- Product Card 1 -->
-        <div *ngFor="let product of productList" class="col-md-4">
+        <div *ngFor="let product of productList | search : searchInput " class="col-md-4">
           <div class="card h-100 border-0 shadow-sm hover-shadow">
             <img [src]="product.image" class="card-img-top"
               alt="Tomatoes">
             <div class="card-body">
-              <h5 class="card-title">{{product.title}}</h5>
-              <p class="card-text text-muted small">Category: {{product.category}}</p>
+              <h5 class="card-title">{{product.title}}</h5>   
+              <p class="card-text text-muted small">Category: {{product.category | uppercase }}</p>
               <div class="mb-2">
                 <span class="text-warning">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -69,6 +68,7 @@
             </div>
           </div>
         </div>
+        <div *ngIf="productList.length === 0"> No Products Available</div>
       </div>
     </div>
   </div>
