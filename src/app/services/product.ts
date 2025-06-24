@@ -59,6 +59,7 @@ export class Product {
   addProduct(product:any){
     this.productList.push(product)
   }
+  
   getProductList(){
     return [...this.productList];
   }

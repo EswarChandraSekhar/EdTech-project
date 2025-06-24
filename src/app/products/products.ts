@@ -17,11 +17,10 @@ export class Products implements OnInit {
   productRating: any = null;
   productImage: string = ''
 
- productList: any[] = []
+  productList: any[] = []
 
   constructor(public productService: Product){
-
-  }
+}
 
   ngOnInit(): void {
    this.productList =  this.productService.getProductList()
